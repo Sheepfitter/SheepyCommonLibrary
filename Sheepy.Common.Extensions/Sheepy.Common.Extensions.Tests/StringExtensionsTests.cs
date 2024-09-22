@@ -169,4 +169,43 @@ public class StringExtensionsTests
         // Assert
         act.Should().Throw<FormatException>();
     }
+
+    [Fact]
+        public void AsString_ValidCharEnumerable_ReturnsString()
+        {
+            // Arrange
+            var charEnumerable = new List<char> { 'H', 'e', 'l', 'l', 'o' };
+
+            // Act
+            var result = charEnumerable.AsString();
+
+            // Assert
+            result.Should().Be("Hello");
+        }
+
+        [Fact]
+        public void AsString_EmptyCharEnumerable_ReturnsEmptyString()
+        {
+            // Arrange
+            var charEnumerable = Array.Empty<char>();
+
+            // Act
+            var result = charEnumerable.AsString();
+
+            // Assert
+            result.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void AsString_NullCharEnumerable_ThrowsArgumentNullException()
+        {
+            // Arrange
+            IEnumerable<char> charEnumerable = null;
+
+            // Act
+            var act = () => charEnumerable.AsString();
+
+            // Assert
+            act.Should().Throw<ArgumentNullException>();
+        }
 }

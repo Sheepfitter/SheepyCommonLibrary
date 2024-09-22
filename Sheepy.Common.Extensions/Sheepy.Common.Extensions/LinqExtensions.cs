@@ -5,15 +5,29 @@ namespace System.Linq
     public static class LinqExtensions
     {
         /// <summary>
-        ///     Checks if the source is empty.
+        /// Determines whether the specified collection is empty.
         /// </summary>
-        /// <returns><b>True</b> - if the source is empty, otherwise <b>false</b>.</returns>
-        public static bool IsEmpty<T>(this IEnumerable<T> source) => !source.Any();
+        /// <typeparam name="T">The type of elements in the collection.</typeparam>
+        /// <param name="source">The collection to check for emptiness.</param>
+        /// <returns><c>true</c> if the collection is empty; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if the source collection is null.</exception>
+        public static bool IsEmpty<T>(this IEnumerable<T> source)
+        {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            return !source.Any();
+        }
 
         /// <summary>
-        ///     Checks if the source is not empty.
+        /// Determines whether the specified collection is not empty.
         /// </summary>
-        /// <returns><b>True</b> - if the source is not empty, otherwise <b>false</b>.</returns>
-        public static bool IsNotEmpty<T>(this IEnumerable<T> source) => !source.IsEmpty();
+        /// <typeparam name="T">The type of elements in the collection.</typeparam>
+        /// <param name="source">The collection to check for non-emptiness.</param>
+        /// <returns><c>true</c> if the collection is not empty; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if the source collection is null.</exception>
+        public static bool IsNotEmpty<T>(this IEnumerable<T> source)
+        {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            return !source.IsEmpty();
+        }
     }
 }
