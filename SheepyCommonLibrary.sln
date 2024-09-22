@@ -1,8 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sheepy.Common.Extensions", "Sheepy.Common.Extensions\Sheepy.Common.Extensions\Sheepy.Common.Extensions.csproj", "{DEBCF1CF-8C3F-4A27-A6E8-ACACD9A5DC06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sheepy.Common.Extensions", "Sheepy.Common.Extensions", "{3995E67B-ABB7-44EE-A833-03049AB08B6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sheepy.Common.Extensions.Tests", "Sheepy.Common.Extensions\Sheepy.Common.Extensions.Tests\Sheepy.Common.Extensions.Tests.csproj", "{DDDB4BD7-9FFC-4422-B8B9-83D705938F62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEBCF1CF-8C3F-4A27-A6E8-ACACD9A5DC06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBCF1CF-8C3F-4A27-A6E8-ACACD9A5DC06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBCF1CF-8C3F-4A27-A6E8-ACACD9A5DC06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBCF1CF-8C3F-4A27-A6E8-ACACD9A5DC06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDDB4BD7-9FFC-4422-B8B9-83D705938F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDDB4BD7-9FFC-4422-B8B9-83D705938F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDDB4BD7-9FFC-4422-B8B9-83D705938F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDDB4BD7-9FFC-4422-B8B9-83D705938F62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEBCF1CF-8C3F-4A27-A6E8-ACACD9A5DC06} = {3995E67B-ABB7-44EE-A833-03049AB08B6E}
+		{DDDB4BD7-9FFC-4422-B8B9-83D705938F62} = {3995E67B-ABB7-44EE-A833-03049AB08B6E}
 	EndGlobalSection
 EndGlobal
