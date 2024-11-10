@@ -1,0 +1,35 @@
+name: Sync GitHub with Azure DevOps
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clone Azure DevOps Repository
+        run: |
+          git clone ${{ secrets.AZURE_TOKEN_REPOSITORY_URL }} azure-repo
+          cd azure-repo
+          git checkout master
+
+      - name: Merge Repositories
+        run: |
+          cd azure-repo
+          git remote add github https://github.com/${{ github.repository }}
+          git fetch github
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git merge github/master --no-edit
+
+      - name: Push Changes to Azure DevOps
+        run: |
+          cd azure-repo
+          git push ${{ secrets.AZURE_TOKEN_REPOSITORY_URL }} master
