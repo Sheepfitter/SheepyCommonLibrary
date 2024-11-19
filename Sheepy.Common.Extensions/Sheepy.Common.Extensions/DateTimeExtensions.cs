@@ -33,5 +33,32 @@ namespace System
             if (source > max) return max;
             return source;
         }
+
+        /// <summary>
+        /// Sets the time of the specified DateTime to the given hour, minute, second, and millisecond values.
+        /// </summary>
+        /// <param name="source">The DateTime to modify.</param>
+        /// <param name="hour">The hour value.</param>
+        /// <param name="minute">The minute value.</param>
+        /// <param name="second">The second value. Default is 0.</param>
+        /// <param name="millisecond">The millisecond value. Default is 0.</param>
+        /// <returns>The modified DateTime with the new time values.</returns>
+        public static DateTime SetTime(this DateTime source, int hour, int minute, int second = 0, int millisecond = 0)
+        {
+            return new DateTime(source.Year, source.Month, source.Day, hour, minute, second, millisecond, source.Kind);
+        }
+
+        /// <summary>
+        /// Sets the date of the specified DateTime to the given year, month, and day values.
+        /// </summary>
+        /// <param name="source">The DateTime to modify.</param>
+        /// <param name="year">The year value.</param>
+        /// <param name="month">The month value.</param>
+        /// <param name="day">The day value.</param>
+        /// <returns>The modified DateTime with the new date values.</returns>
+        public static DateTime SetDate(this DateTime source, int year, int month, int day)
+        {
+            return new DateTime(year, month, day, source.Hour, source.Minute, source.Second, source.Millisecond, source.Kind);
+        }
     }
 }

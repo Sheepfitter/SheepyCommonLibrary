@@ -108,4 +108,32 @@ public class DateTimeExtensionsTests
         // Assert
         result.Should().Be(date);
     }
+
+    [Fact]
+    public void SetTime_ShouldReturnDateTimeWithSpecifiedTime()
+    {
+        // Arrange
+        var date = new DateTime(2023, 10, 15, 12, 30, 45, 0, DateTimeKind.Local);
+        var expected = new DateTime(2023, 10, 15, 13, 45, 20, 50, DateTimeKind.Local);
+
+        // Act
+        var result = date.SetTime(13, 45, 20, 50);
+
+        // Assert
+        result.Should().Be(expected);
+    }
+
+    [Fact]
+    public void SetDate_ShouldReturnDateTimeWithSpecifiedDate()
+    {
+        // Arrannge
+        var date = new DateTime(2023, 10, 15, 12, 30, 45, 0, DateTimeKind.Local);
+        var expected = new DateTime(2024, 01, 02, 12, 30, 45, 0, DateTimeKind.Local);
+
+        // Act
+        var result = date.SetDate(2024, 01, 02);
+
+        // Assert
+        result.Should().Be(expected);
+    }
 }
