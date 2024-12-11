@@ -1,6 +1,6 @@
 namespace System
 {
-    public static class StringExtensions
+    public static class StringToDateTimeExtensions
     {
         /// <summary>
         /// Converts the specified string representation of a date and time to its DateTime equivalent.

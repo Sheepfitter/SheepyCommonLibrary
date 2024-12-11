@@ -1,8 +1,8 @@
 using FluentAssertions;
 
-namespace Sheepy.Common.Extensions.Tests;
+namespace Sheepy.Common.Extensions.Tests.StringExtensions;
 
-public class StringExtensionsTests
+public class StringToDateTimeExtensionsTests
 {
     [Fact]
     public void ToDateTime_ValidDateString_ReturnsDateTime()
