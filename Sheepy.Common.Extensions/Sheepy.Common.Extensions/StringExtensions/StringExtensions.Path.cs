@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace System
@@ -9,6 +10,7 @@ namespace System
         /// </summary>
         /// <param name="source">The path to get the first directory from.</param>
         /// <returns>The name of the first directory in the specified path.</returns>
+        /// <exception cref="ArgumentException">Thrown when the specified path does not contain any directories or is not a well-formed path string.</exception>
         public static string GetFirstDirectory(this string source)
         {
             var directoryPath = Path.GetDirectoryName(source);
@@ -18,7 +20,7 @@ namespace System
             if (!Path.IsPathRooted(source))
                 source = Path.DirectorySeparatorChar + source;
 
-            if (!Uri.TryCreate(source, UriKind.RelativeOrAbsolute, out var uri))
+            if (!Uri.TryCreate(source, UriKind.RelativeOrAbsolute, out _))
                 throw new ArgumentException("The specified path is not a well-formed path string.", nameof(source));
 
             var directory = new DirectoryInfo(source);
@@ -26,6 +28,26 @@ namespace System
                 directory = directory.Parent;
 
             return directory.Name;
+        }
+
+        /// <summary>
+        /// Tries to get the first directory in the specified path.
+        /// </summary>
+        /// <param name="source">The path to get the first directory from.</param>
+        /// <param name="firstDirectory">When this method returns, contains the name of the first directory in the specified path, if the path is valid; otherwise, null.</param>
+        /// <returns>true if the first directory was successfully retrieved; otherwise, false.</returns>
+        public static bool TryGetFirstDirectory(this string source, [NotNullWhen(true)] out string? firstDirectory)
+        {
+            try
+            {
+                firstDirectory = source.GetFirstDirectory();
+                return true;
+            }
+            catch
+            {
+                firstDirectory = null;
+                return false;
+            }
         }
     }
 }

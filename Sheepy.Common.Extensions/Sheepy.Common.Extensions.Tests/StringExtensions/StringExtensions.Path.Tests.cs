@@ -38,4 +38,28 @@ public class StringPathExtensionsTests
         // Assert
         act.Should().Throw<ArgumentException>();
     }
+
+    [Theory]
+    [InlineData("C:\\temp\\file.txt")]
+    public void TryGetFirstDirectory_WhenPathIsValid_ReturnsFirstDirectory(string path)
+    {
+        // Act
+        var result = path.TryGetFirstDirectory(out var firstDirectory);
+
+        // Assert
+        result.Should().BeTrue();
+        firstDirectory.Should().Be("temp");
+    }
+
+    [Theory]
+    [InlineData("C:\temp\file.txt")]
+    public void TryGetFirstDirectory_WhenPathIsNotValid_ReturnsFalse(string path)
+    {
+        // Act
+        var result = path.TryGetFirstDirectory(out var firstDirectory);
+
+        // Assert
+        result.Should().BeFalse();
+        firstDirectory.Should().BeNull();
+    }
 }
